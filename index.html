@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarePlus - Styles and Animations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main class="main">
+
+  <header class="top">
+    <div class="brand">
+      <img src="logo.svg" alt="">
+      <span>CarePlus<small>Medical Appointment System</small></span>
+    </div>
+    <h1>Waiting room display</h1>
+    <p>The screen in the clinic waiting room: live time, calming colours, readable instructions, the doctor's home visit and today's registered patients.</p>
+  </header>
+
+  <!-- 1. Digital clock -->
+  <section class="tool" id="clock">
+    <div class="tool-info">
+      <h2>Digital Clock!</h2>
+      <p>Clinic time, updated every second.</p>
+      <table class="chart">
+        <tr><th>Consultation hours</th><th>Time</th></tr>
+        <tr><td>Morning clinic</td><td>09:00 &ndash; 13:00</td></tr>
+        <tr><td>Evening clinic</td><td>16:00 &ndash; 20:00</td></tr>
+        <tr><td>Sunday</td><td>10:00 &ndash; 12:00</td></tr>
+      </table>
+    </div>
+    <div class="tool-body">
+      <div class="readout clock">
+        <div><small id="today">Today</small><span id="time"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Background colour change -->
+  <section class="tool" id="backdrop">
+    <div class="tool-info">
+      <h2>Dynamic Background!</h2>
+      <p>The page background changes to a soft random colour every 30 seconds to keep the waiting room calm.</p>
+    </div>
+    <div class="tool-body">
+      <div class="readout">
+        <div><small>Current background</small><span><i class="swatch" id="swatch"></i><b id="color-name"></b></span></div>
+        <div><small>Changes</small><span>every 30s</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Font size on mouse over / out -->
+  <section class="tool" id="zoom">
+    <div class="tool-info">
+      <h2>Change font size!</h2>
+      <p>Move the mouse over the instructions to make them bigger for elderly patients. Move away to shrink them back.</p>
+    </div>
+    <div class="tool-body">
+      <p id="para1" onmouseover="incSize()" onmouseout="decSize()">
+        Please arrive 10 minutes before your appointment, bring your old prescriptions and wait for your token number to be called.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. Moving image -->
+  <section class="tool" id="homevisit">
+    <div class="tool-info">
+      <h2>Doctor home visit</h2>
+      <p>Move sends the clinic van out for a home visit appointment. Stop halts it and brings it back to the clinic.</p>
+    </div>
+    <div class="tool-body">
+      <div id="track"><img src="ambulance.svg" id="img" alt="Clinic van"></div>
+      <div class="btn-row">
+        <button class="btn" onclick="moveRight();">Move</button>
+        <button class="btn btn-ghost" onclick="stop();">Stop</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Array of objects -->
+  <section class="tool" id="patients">
+    <div class="tool-info">
+      <h2>Registered patients</h2>
+      <p>Each patient is an object with a name, register number and date of birth. They are grouped by birth year with if / else.</p>
+    </div>
+    <div class="tool-body">
+      <ul class="lines" id="student-list"></ul>
+      <div class="groups">
+        <div class="group before"><h3>Born before 2000 <span id="count-before">0</span></h3><ul id="before2000"></ul></div>
+        <div class="group after"><h3>Born in 2000 or later <span id="count-after">0</span></h3><ul id="after2000"></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">CarePlus, Medical Appointment System</footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
